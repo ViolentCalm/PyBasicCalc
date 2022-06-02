@@ -1,6 +1,8 @@
 # PyBasicCalc
 The most generic console calculator ever.
 
+< introduction >
+
 My philosophy behind making this is simple, I needed a project 
 that would allow me to develop some skills programming with Python,
 while at the same time creating something useful and utilitarian.
@@ -16,3 +18,10 @@ learning to program or write code with Python, so I felt like its a good idea to
 
 Hope it can be of some use, and I might release an .exe build at some point, once I figure out
 why PyInstaller is such a pain.
+
+< usage >
+
+It works as simply as it could possibly work, you are given instructions the entire way through.
+
+Giving any incorrect input for a section [ either for the number input or operation input ],
+will forcequit the program.
