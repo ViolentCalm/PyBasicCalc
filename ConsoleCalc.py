@@ -1,104 +1,166 @@
 import decimal
 
-# Delaring the RESULT datatypes early so it can be accessed by the entire program.
-# Probably not necessary but I felt it was a good idea.
+# Programmed by ViolentCalm
+# violent_calm on Twitter 
+# ConsoleCalc V2.0 ( Pre - Release Version ) [ nearly perfect ]
  
-RESULT = decimal.Decimal()
-RESULT2 = decimal.Decimal()
-RESULT3 = decimal.Decimal()
 
-# Terrible attempt at ASCII art
+# CALCULATOR LOGIC
+# First we start off with a while True loop to encapsulate the entire functionality of the program.
+# ( hopefully .. )
 
-print("  Welcome to the most basic calculator ever!  ")
-print("00000000")
-print("0XX00XX0")
-print("0xx00xx0")
-print("00000000")
-print("0x0000x0")
-print("00x00x00")
-print("000xx000")
-print("00000000")
+while True:
 
-# Declaring the datatypes for fNumb / fNumbTwo / fOperand , and taking an input in those types exclusively.
+    # Defining what fNumb , sNumb etc are, kWestion is defined just as a safety net, 
+    # it is probably useless to include, but it is a holdover and will be removed shortly.
 
-fNumb = decimal.Decimal(input("  Enter First Number. \n " ))
-fNumbTwo = decimal.Decimal(input("  Enter Second Number \n "))
-fOperand = str(input("  Enter Operation + - * / \n "))
+    BreakValue = decimal.Decimal()
+    fNumb = decimal.Decimal(input("\n  Enter First Number. \n \n " ))
+    sNumb = decimal.Decimal(input("\n  Enter Second Number \n \n "))
+    fOp = str(input("\n  Enter operation add, sub, mult, div, \n  Make sure to use lowercase! \n \n"))
+    kWestion = str()
 
-# Logic for the operations, 
-# if the operation is X, set RESULT equal to the number input with the operation applied.
+    # if fOp ( function Operation ) is equal to any of the string values explicitly stated,
+    # then execute the code below it, which is to define what the RESULT is, define lastCalculation
+    # as the current RESULT for later, print the RESULT with newlines, and ask the question to continue or quit.
 
-if fOperand == "+":
-    RESULT = (fNumb + fNumbTwo)  
-if fOperand == "-":
-    RESULT =(fNumb - fNumbTwo) 
-if fOperand == "*":
-    RESULT = (fNumb * fNumbTwo) 
-if fOperand == "/":
-    RESULT = (fNumb / fNumbTwo)
-  
-# Print out the first result THEN gather input for the next operation, in the form of a string.
+    # I do this for every possible function operation because they are all nested within the function operation if statement.
 
-print("  " , RESULT)
+    if fOp == str("add" or " add" or "add " or " add " or "addition" or " addition" or " addition " or "addition "):
+        RESULT = fNumb + sNumb
 
-question = str(input("  Do you want to calculate this against a new number? Y or N \n "))
+        lastCalculation = RESULT
+    
+        print("\n" , RESULT , "\n")
 
+        question = str(input("\n  Press 1 to do an entirely new calculation, \n  press 2 to calculate this against a new number, \n  and press 3 to end. \n \n"))
+        
+        if question == str("1"):
+            continue
 
-# If the question is exactly y or Y, ask about the third number and second operation.
+        if question == str("3"):
+            break
 
-if question == str("y" or "Y"):
-    fNumbThree = decimal.Decimal(input("  Enter Third Number \n "))
-    fOperand2 = str(input("  Enter Second Operation + - * / \n "))
+        if question == str("2"):
+            kWestion = "2"
 
-# Same operation code as before, 
-# just defining that RESULT2 is RESULT in addition to the operation happening with fNumbThree.
+    if fOp  == str("subtract" or " subtract" or " subtract " or "subtract " or "sub" or " sub" or " sub " or "sub "):
+        RESULT = fNumb - sNumb
 
-    if fOperand2 == "+":
-        RESULT2 = (RESULT + fNumbThree)  
-    if fOperand2 == "-":
-        RESULT2 =(RESULT - fNumbThree) 
-    if fOperand2 == "*":
-        RESULT2 = (RESULT * fNumbThree) 
-    if fOperand2 == "/":
-        RESULT2 = (RESULT / fNumbThree)
+        lastCalculation = RESULT
+    
+        print("\n" , RESULT , "\n")
 
+        question = str(input("\n  Press 1 to do an entirely new calculation, \n  press 2 to calculate this against a new number, \n  and press 3 to end. \n \n"))
+        
+        if question == str("1"):
+            continue
 
-# Print two spaces AND RESULT2, so it is spaced from the edge.
-# Ask again about another operation.
-      
-print("  " , RESULT2)
+        if question == str("3"):
+            break
 
-question2 = str(input("  Do you want to calculate this against ANOTHER number? Y or N \n "))
+        if question == str("2"):
+            kWestion = "2"
 
-# If the question is exactly y or Y, ask about the fourth number and third operation.
+    if fOp == str("mult" or " mult" or "mult " or " mult " or "multiply" or " multiply" or "multiply " or " multiply "):
+        RESULT = fNumb * sNumb
 
-if question2 == str("y" or "Y"):
-    fNumbFour = decimal.Decimal(input("  Enter Fourth Number \n "))
-    fOperand3 = str(input("  Enter Third Operation + - * / \n "))
+        lastCalculation = RESULT
+    
+        print("\n" , RESULT , "\n")
 
-# Same operation code as before, 
-# just defining that RESULT3 is RESULT2 in addition to the operation happening with fNumbFour.
+        question = str(input("\n  Press 1 to do an entirely new calculation, \n  press 2 to calculate this against a new number, \n  and press 3 to end. \n \n"))
+        
+        if question == str("1"):
+            continue
 
-    if fOperand3 == "+":
-        RESULT3 = (RESULT2 + fNumbFour)  
-    if fOperand3 == "-":
-        RESULT3 =(RESULT2 - fNumbFour) 
-    if fOperand3 == "*":
-        RESULT3 = (RESULT2 * fNumbFour) 
-    if fOperand3 == "/":
-        RESULT3 = (RESULT2 / fNumbFour)
+        if question == str("3"):
+            break
 
-# Print out the first result THEN gather input for the next operation, in the form of a string.
-
-print("  " , RESULT3)
-
-# Function thats says " if the answer to the question was NOT yes, then exit with the message " Have a nice day! " 
-
-if question != "y" or "Y":
-    exit("  Have a nice day! ")
+        if question == str("2"):
+            kWestion = "2"
 
 
-# Function thats says " if the answer to the question2 was NOT yes, then exit with the message " Have a nice day! " 
+    if fOp == str("div" or " div " or " div" or "div " or "divide" or " divide" or " divide " or "divide "):
+        RESULT = fNumb / sNumb
+        
+        lastCalculation = RESULT
+    
+        print("\n" , RESULT , "\n")
+        
+        question = str(input("\n  Press 1 to do an entirely new calculation, \n  press 2 to calculate this against a new number, \n  and press 3 to end. \n \n"))
+        
+        if question == str("1"):
+            continue
 
-if question2 != "y" or "Y":
-    exit("  Have a nice day! ")
+        # if the question answer is 1, then continue ( loop back to beginning ) , and if it is 3, then break out of this loop? ( might be redundant )
+        # im not sure if I needed to break out of a main loop just to access the inner loop in an isolated way or not,
+        # regardless it seems to be working at the moment so I wont mess around with it at the moment LOL
+
+        if question == str("3"):
+            break
+
+        if question == str("2"):
+            kWestion = "2"
+    
+    # This is the part where kWestion becomes redundant I believe, because this if statement handled that for me without errors.
+    # This if question == 2 is also what starts the second While True: loop that handles calculations against previous numbers.
+    # A slight alteration to the above calculation formula, just including lastCalculation as the new global variable thingy.
+    
+    if question == str("2"):
+
+        while True:
+     
+     
+
+            
+
+                sNumb = decimal.Decimal(input("\n  Enter new number \n \n"))
+                fOp = str(input("\n  Enter operation add, subtract, mult, div, \n  Make sure to use lowercase! \n \n"))
+
+    
+                if fOp == str("add" or " add" or "add " or " add " or "addition" or " addition" or " addition " or "addition "):
+                    RESULT2 = lastCalculation + sNumb
+        
+                    lastCalculation = RESULT2
+        
+                if fOp  == str("subtract" or " subtract" or " subtract " or "subtract " or "sub" or " sub" or "sub " or " sub "):
+                    RESULT2 = lastCalculation - sNumb
+        
+                    lastCalculation = RESULT2
+        
+        
+                if fOp == str("mult" or " mult" or "mult " or " mult " or "multiply" or " multiply" or "multiply " or " multiply "):
+                    RESULT2 = lastCalculation * sNumb
+        
+                    lastCalculation = RESULT2
+        
+                if fOp == str("div" or " div " or " div" or "div " or "divide" or " divide" or " divide " or "divide "):
+                    RESULT2 = lastCalculation / sNumb
+        
+                    lastCalculation = RESULT2
+    
+                print("\n" , RESULT2 , "\n")
+
+                question = str(input("\n  Press 1 to do an entirely new calculation, \n  press 2 to calculate this against a new number, \n  and press 3 to end. \n \n"))
+
+                if question == str("1"):
+                    break
+
+                if question == str("2"):
+                    continue
+                
+                # Just for my own peace of mind, I create a custom BreakValue variable and define it as 1, it only gets created at this moment.
+                # After that we break out of this inner while True loop.
+
+                if question == str("3"):
+                    BreakValue = decimal.Decimal(1)
+                    break
+
+    # Here I check the value of BreakValue just to be sure we are still within the main loop and haven't left the solar system yet,
+    # and if we are still alive, break out again to the exit statement.
+
+    if BreakValue == decimal.Decimal(1):
+        break
+
+exit("  Have a nice day!  ")
